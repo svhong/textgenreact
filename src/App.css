@@ -25,3 +25,7 @@ label {
   font-family: "Neucha";
   font-weight: normal;
 }
+
+.titleText img {
+  width: 1em;
+}

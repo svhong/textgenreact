@@ -4,6 +4,7 @@ import Output from "./components/output";
 import Selectmeat from "./components/selectmeat";
 import Selectamount from "./components/selectamount";
 import Selectsentence from "./components/sentence";
+import Ham from "./img/ham.png";
 import axios from "axios";
 
 class App extends Component {
@@ -52,7 +53,11 @@ class App extends Component {
   render() {
     return (
       <div className="App container">
-        <h1 className="titleText">ReactJS Bacon Ipsum Generator</h1>
+        <h1 className="titleText">
+          {" "}
+          <img src={Ham} alt="ham..." /> ReactJS Bacon Ipsum Generator
+          <img src={Ham} alt="ham..." />
+        </h1>
         <hr />
         <form className="form userSelect">
           <div className="form-group">
