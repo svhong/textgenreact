@@ -49,6 +49,9 @@ class App extends Component {
   changeSentence(x) {
     this.setState({ paras: x }, this.getSampleText);
   }
+  fetchMeat() {
+    //some code here to shoot query with button click
+  }
 
   render() {
     return (
@@ -84,6 +87,7 @@ class App extends Component {
           </div>
         </form>
         <Output value={this.state.text} />
+        <button onClick={this.fetchMeat} />
       </div>
     );
   }
