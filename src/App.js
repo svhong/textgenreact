@@ -5,7 +5,6 @@ import Selectmeat from "./components/selectmeat";
 import Selectamount from "./components/selectamount";
 import Selectsentence from "./components/sentence";
 import Ham from "./img/ham.png";
-import axios from "axios";
 
 class App extends Component {
   constructor(props) {
@@ -17,6 +16,7 @@ class App extends Component {
       lorem: true,
       text: ""
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentWillMount() {
@@ -24,30 +24,36 @@ class App extends Component {
   }
 
   getSampleText() {
-    axios
-      .get(
-        "https://baconipsum.com/api/?type=" +
-          this.state.meat +
-          "&" +
-          this.state.paras +
-          "=" +
-          this.state.amount +
-          "&start-with-lorem=1"
-      )
-      .then(res => {
-        this.setState({ text: res.data });
-      });
+    fetch(
+      "https://baconipsum.com/api/?type=" +
+      this.state.meat +
+      "&" +
+      this.state.paras +
+      "=" +
+      this.state.amount +
+      "&start-with-lorem=1"
+    )
+      .then(res => res.json())
+      .then(data => this.setState({
+        text: data
+      }))
+
   }
   //getSampleText parameter updates request
   showHtml(x) {
-    this.setState({ meat: x }, this.getSampleText);
+    this.setState({ meat: x });
   }
   changeAmount(number) {
-    this.setState({ amount: number }, this.getSampleText);
+    this.setState({ amount: number });
   }
 
   changeSentence(x) {
-    this.setState({ paras: x }, this.getSampleText);
+    this.setState({ paras: x });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.getSampleText();
   }
 
   render() {
@@ -59,7 +65,7 @@ class App extends Component {
           <img src={Ham} alt="ham..." />
         </h1>
         <hr />
-        <form className="form userSelect">
+        <form className="form userSelect" onSubmit={this.handleSubmit}>
           <div className="form-group">
             <label>Pick A Protein</label>
             <Selectmeat
@@ -78,11 +84,13 @@ class App extends Component {
           <div className="form-group">
             <label>Prepped?</label>
             <Selectsentence
-              value={this.state.amount}
+              value={this.state.paras}
               onChange={this.changeSentence.bind(this)}
             />
           </div>
+          <button>Order it!</button>
         </form>
+        <br />
         <Output value={this.state.text} />
       </div>
     );
