@@ -28,7 +28,7 @@ class App extends Component {
       "https://baconipsum.com/api/?type=" +
       this.state.meat +
       "&" +
-      this.state.paras + 
+      this.state.paras +
       "=" +
       this.state.amount +
       "&start-with-lorem=1"
@@ -88,7 +88,7 @@ class App extends Component {
               onChange={this.changeSentence.bind(this)}
             />
           </div>
-          <button>Chop it up!</button>
+          <button>Order it!</button>
         </form>
         <br />
         <Output value={this.state.text} />
