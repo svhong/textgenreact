@@ -73,7 +73,6 @@ class App extends Component {
               onChange={this.showHtml.bind(this)}
             />
           </div>
-          <br />
           <div className="form-group">
             <label>How Many Pounds?</label>
             <Selectamount
@@ -88,7 +87,8 @@ class App extends Component {
               onChange={this.changeSentence.bind(this)}
             />
           </div>
-          <button>Order it!</button>
+          <br />
+          <button className="orderButton form-group">Order it!</button>
         </form>
         <br />
         <Output value={this.state.text} />

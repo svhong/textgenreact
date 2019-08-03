@@ -30,3 +30,8 @@ label {
 .titleText img {
   width: 1em;
 }
+
+.orderButton {
+  background-color: #c9b3bd;
+  border: 2px solid black;
+}
